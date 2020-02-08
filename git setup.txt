@@ -1,0 +1,32 @@
+Generate SSH Key
+ssh-keygen -t rsa -b 4096 -C "gupta.pankaj831@gmail.com"
+
+Start SSH Agent
+eval $(ssh-agent -s)
+
+Add SSH Key
+ssh-add ~/.ssh/id_rsa
+
+Copy Public Key to Clipboard
+clip < ~/.ssh/id_rsa.pub
+
+Go to Github -> Go to Setting -> Go to SSH and GPG keys -> SSH keys -> New SSH key
+Enter Name and SSH Key -> Save
+
+Clone git repo using SSH
+git clone git@github.com:guptapankaj831/MyCode.git
+
+
+…or create a new repository on the command line
+echo "# first" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin git@github.com:guptapankaj831/first.git
+git push -u origin master
+
+
+…or push an existing repository from the command line
+git remote add origin git@github.com:guptapankaj831/first.git
+git push -u origin master
+
