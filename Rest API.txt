@@ -1,0 +1,170 @@
+Representational State Transfer (REST)
+
+Rest:-
+	It stands for Representational State Transfer. Which means when a client request for a URL, Server returns the data. The Server contains actual data, it return only representation of that data to Server. State is the state of that data. If anything changes in data, which means state of data is changing. Transfer means the Server is returning data as response to the client.
+	Rest is set of Architectual Constraints. There are 6 types of Constraints.
+
+	Rest is full of Resources/Nouns and SOAP is full of Actions/Verbs.
+
+
+
+Need of REST
+	- Separate Client and Server
+	- Rest is independent of platform & Language
+	- Flexibility & Scalability
+	- Not constrained to one format. Can return (Xml, JSON, etc...)
+	- Since built on top of HTTP, can take advantage of HTTP cache.
+	- Easy to use
+	- Discoverability
+
+
+
+Restful Web API
+Web is interconnected Networks.
+API is Application Programming Interface. Means we have common set of definations that how two computer can interact to each other.
+Web Server used to handle request and response.
+We need Web API because we have Distributed nature of Systems.
+
+
+
+Comparison of API
+Restful services are the services which are build using Restful Architectual Style.
+Web API is technology offered by Microsoft to build REST APIs.
+Another category of API existed called SOAP.
+
+SOAP
+	- Simple object Access Protocal
+	- Can be build using WCF(Window Communication Foundation).
+	- Returns Xml
+	- Web services are nothing but SOAP services.
+	
+If someone says Web API that means they are talking about REST services or REST API.
+If someone sayd Web services that means they are talking about SOAP services.
+
+Rest is lightweight and SOAP is not lightweight.
+Rest is Architectual style and SOAP is a Protocal.
+
+
+
+Intuitive understanding of REST
+	- REST is an architectual style.
+	- Restful is referred to web services that implement REST.
+	- It is simply a program that return data from the db to the client in a format that it requests.
+	- It is based on HTTP, it retrieves data through standard HTTP methods(GET, POST, PUT, DELETE).
+	
+
+
+REST Constraints
+	- Client-Server
+	- Stateless
+	- Cache
+	- Uniform Interface
+	- Layered System
+	- Code on Demand
+
+Client-Server
+	- This constraint states that a REST application should have a Client Separate Architecture.
+	- Advantage of Client & Server are separated.
+	- They can evolve independently.
+	- Clients need not know anything about business logic/data access layer.
+	- Server need not know anything about the frontend UI.
+
+Stateless
+	- Stateless constraint states that the Server does not store any session data.
+	- The communication b/w the Client and Server is stateless.
+	- It means that all the information to understand a request is contained within the request.
+	- Improves Scalability.
+	- The disadvantage is It require higher bandwidth, as everything we are sending in a request.
+
+Cache
+	- Cache constraint states responses should be cacheable, if possible.
+	- It requires that every response should include whether a response can be cacheable or not.
+	- For subsequent requests, the Client can retrieve from it's cache, no need to send request to the Server.
+	- Reduces network latency.
+
+Uniform Interface
+	- Uniform Interface is the key differentitator b/w REST and Non-REST APIs.
+	- There are 4 elements of Uniform Interface constraint.
+		- Identification of Resources(Typically by an URL).
+		- Manipulation of Resources throught representations.
+		- Self-descriptive messages for each request.
+		- HATEOS(Hypermedia As The Engine Of application State)
+	- Promotes generality as all components interact in the same way.
+
+Layered System
+	- Allows and architecture to be composed of hierarchical layers.
+	- Each layer doesn't know anything beyond the immediate layer.
+	- Limits the amount of complexity that can be introduced at any single layer.
+	- Disadvantage is latency.
+
+Code on Demand constraint
+	- Optional constraint
+	- In addition to data, the servers can provide executable code to the client.
+	- This constraint reduces visibility.
+
+
+
+Concept of Serialization
+Serialization is converting Objects to String. We can serialize to any encoding format. Popular ones are XML & JSON.
+
+
+
+Deserialization
+Deserialization is converting JSON string to Objects.We can Deserialize to any encoding format. Popular ones are XML & JSON.
+
+
+
+Richardson Maturity Model
+	- Richardson Maturity Model is a model developed by Leonard Richardson.
+	- It grades APIs by their Restful maturity.
+	- There are 4 levels. Only when the APIs reach the level 4, we can talk about a Restful API. The levels are:
+		- Level 0
+		- Level 1
+		- Level 2
+		- Level 3
+
+Level 0
+	- Level 0 - Plain old XML
+	- HTTP is used only as a transport protocol. HTTP is used for remote interaction.
+	- To get the data and to post the data we send request to the same URL, only POST request may be used.
+	- To get the data:
+		- POST http://localhost:400/customer
+	- To post the data:
+		- POST http://localhost:400/customer
+
+Level 1
+	- In Level 0, there was only 1 URL.
+	- In Level 1, each resource is mapped to a specific URL.
+	- URL To get products
+		- http://localhost:400/product
+	- URL to get specific product
+		- http://localhost:400/product/1
+	- Still, only one HTTP method(POST) is still used for retrieving & creating data.
+
+Level 2
+	- At Level 2, correct HTTP verbs(GET, POST, PUT, DELETE) are used with each request.
+	- For each of these requests, correct HTTPS response code is provided.
+	- Example:-
+		GET http://localhost:400/customer
+		200 OK
+
+Level 3
+	- At Level 3, the APIs support HATEOS
+	- Exm:-
+		GET http://localhost:400/customer
+		for this, the response we get is
+		Customer JSON + Self-documenting Hypermedia
+	- Helps in Self-documentation
+
+
+
+
+
+
+
+
+
+
+
+
+
