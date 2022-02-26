@@ -158,7 +158,101 @@ Level 3
 
 
 
+Understanding HTTP Request
+HTTP Request is a message from Client to Server. We will send the request through HTTP protocal. Protocal is a set of rules to communicate b/w 2 people.
+HTTP Request message contain Method name, HTTP specification, url which we want to access, host name and host port number, client details like web browser and O/S.
 
+
+
+HTTP Request Methods
+- GET		-	To Get data from resource
+- PUT		-	To update data at a resource
+- POST		-	To create data at a resource
+- DELETE	-	To delete data at a resource
+- PATCH		-	To partically update data at a resource
+
+
+
+HTTP Response
+HTTP Response is a message from the server to client.
+For every request, there will be a response
+A HTTP Response contains:-
+	-	HTTP Status Code
+	-	Content-type, which indicate the type of Content within the message body. Content-type can be application/json, application/xml etc.
+	-	Content-Length, indicates the total no of Char in the message body.
+	-	And the last line, JSON or XML is the message that is received from server to the client.
+
+
+
+Controllers and Actions
+Controllers are nothing but classes that inherit from APIController class.
+When a user hits an URL, the URL will be mapped to the appropriate Controller according to the Routing defined.
+Controllers have Methods called Actions.
+So every request to a URL will invoke the method in the appropriate Controller. The method will get executed and will return a HTTP Response.
+
+
+
+CORS and Enabling CORS
+	-	Cross-Origin Request Sharing
+	-	By default, browsers prevent AJAX requests from another origin.
+	-	CORS is a standard to relax the same-origin policy.
+	-	Selectively allow cross origin requests while rejecting others.
+
+What is Same Origin?
+	-	2 URLs have same origin if they have identical schemes, hosts & ports.
+
+What is a Scheme?
+	-	Scheme is a Portocal.
+	-	Ex:- http://localhost:500 & https://localhost:500 have different origin because they have different schemes.
+
+What is a host?
+	-	Host is a domain.
+	-	Ex:- http://sample.com:500 & http://sample.net:500 have different origin because they have different domains.
+
+What is a Port?
+	-	Port is a place where the application listens to.
+	-	Ex:- http://localhost:500 & http://localhost:5000 have different origin because they have different Ports(500 & 5000).
+
+
+
+Introduction to Caching
+	-	Caching can dramatically improve performance.
+	-	Eliminating request reduces the number of requests from the client.
+		-	Uses Expiration Mechanism for this purpose.
+	-	Eliminating the need to send full response reduces network bandwidth requirement.
+		-	Uses Validation Mechanism for this purpose.
+	-	Cache sits b/w the Client application and the API. It is the middle-men in our architecture.
+	-	We have 3 types of cache.
+		-	Private or Client cache
+		-	Gateway cache or Server cache
+		-	Proxy cache
+
+
+
+Expiration Model
+	-	Cache information can be specified in:
+		-	Expires Header:- Expires Mon, 23 July, 2020
+		-	Cache-control Header:- cache-control: public, max-age=2000 (This is seconds)
+	-	When the client request data for the first time, the data is cached either by private/shared cache.
+	-	Subsequent requests use the max-age directive to decide if it should hit the API or cache.
+
+
+
+Validation Model
+	-	To validate the freshness of a response that is cached.
+	-	Cache needs to check with the server, if the response has expired.
+	-	So, it validates against a validators.
+	-	2 types of validators-
+		-	Strong validator:-	byte-to-byte comparison of the representation.
+		-	Weak validator:- 	looks for semantic equivalence.
+
+How Validation Model Works:-
+	-	For each request, Server will send a resource and an Etag for that resource. This response can be cached.
+		-	Exm:- 	Etag:"1234"
+	-	If the data is expired, the cache can send the Etag of the resource to the API with if-None-Match field, checking, if the resource is updated
+		-	if-None-Match: "1234"
+	-	If the resource is not updated, the Server sends a 304 (not modified) message to the cache. The Cache sends 200 OK response to the client.
+	-	If the resource is updated, new data will be returned.
 
 
 
